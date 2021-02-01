@@ -1,0 +1,53 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "strict": true,
+    "jsx": "preserve",
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "baseUrl": "./",
+    "paths": {
+      "@/hooks/*": [
+        "hooks/*"
+      ],
+      "@/components/*": [
+        "components/*"
+      ],
+      "@/pages/*": [
+        "pages/*"
+      ],
+      "@/helpers/*": [
+        "helpers/*"
+      ],
+      "@/assets/*": [
+        "assets/*"
+      ]
+    },
+    "types": [
+      "webpack-env"
+    ],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ]
+}
