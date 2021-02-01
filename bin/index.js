@@ -5,7 +5,7 @@ const path = require('path');
 const https = require('https');
 const { exec } = require('child_process');
 
-const packageJson = require('./package.json');
+const packageJson = require('../package.json');
 
 const scripts = `"start": "cross-env NODE_ENV=development webpack-dev-server -d",
     "build": "cross-env NODE_ENV=production webpack -p",
