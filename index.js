@@ -81,21 +81,21 @@ exec(
 
     // npm will remove the .gitignore file when the package is installed, therefore it cannot be copied
     // locally and needs to be downloaded. See https://github.com/Kornil/simple-react-app/issues/12
-    https.get(
-      'https://raw.githubusercontent.com/Kornil/simple-react-app/master/.gitignore',
-      (res) => {
-        res.setEncoding('utf8');
-        let body = '';
-        res.on('data', (data) => {
-          body += data;
-        });
-        res.on('end', () => {
-          fs.writeFile(`${process.argv[2]}/.gitignore`, body, { encoding: 'utf-8' }, (err) => {
-            if (err) throw err;
-          });
-        });
-      },
-    );
+    // https.get(
+    //   'https://raw.githubusercontent.com/Kornil/simple-react-app/master/.gitignore',
+    //   (res) => {
+    //     res.setEncoding('utf8');
+    //     let body = '';
+    //     res.on('data', (data) => {
+    //       body += data;
+    //     });
+    //     res.on('end', () => {
+    //       fs.writeFile(`${process.argv[2]}/.gitignore`, body, { encoding: 'utf-8' }, (err) => {
+    //         if (err) throw err;
+    //       });
+    //     });
+    //   },
+    // );
 
     console.log('npm init -- done\n');
 
