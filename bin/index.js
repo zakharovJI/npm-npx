@@ -50,7 +50,7 @@ const getDeps = deps =>
     // exclude the plugin only used in this file, nor relevant to the boilerplate
     .replace(/fs-extra[^\s]+/g, '');
 
-console.log('Initializing project..', process, process.argv);
+console.log('Initializing project..');
 
 // create folder and initialize npm
 exec(
@@ -80,24 +80,6 @@ exec(
         .pipe(fs.createWriteStream(`${packageJson.name}/${filesToCopy[i]}`));
     }
 
-    // npm will remove the .gitignore file when the package is installed, therefore it cannot be copied
-    // locally and needs to be downloaded. See https://github.com/Kornil/simple-react-app/issues/12
-    // https.get(
-    //   'https://raw.githubusercontent.com/Kornil/simple-react-app/master/.gitignore',
-    //   (res) => {
-    //     res.setEncoding('utf8');
-    //     let body = '';
-    //     res.on('data', (data) => {
-    //       body += data;
-    //     });
-    //     res.on('end', () => {
-    //       fs.writeFile(`${packageJson.name}/.gitignore`, body, { encoding: 'utf-8' }, (err) => {
-    //         if (err) throw err;
-    //       });
-    //     });
-    //   },
-    // );
-
     console.log('npm init -- done\n');
 
     // installing dependencies
@@ -126,5 +108,9 @@ exec(
           .catch(err => console.error(err));
       },
     );
+
+    fs
+      .createReadStream(path.join(__dirname, `../gitignorelocal}`))
+      .pipe(fs.createWriteStream(`${packageJson.name}/.gitignore`));
   },
 );
