@@ -81,8 +81,8 @@ exec(
     }
 
     fs
-      .createReadStream(path.join(__dirname, `../${'.gitignorelocal'}`))
-      .pipe(fs.createWriteStream(`${packageJson.name}/${'.gitignore'}`));
+      .createReadStream(path.join(__dirname, `../.gitignorelocal`))
+      .pipe(fs.createWriteStream(`${packageJson.name}/.gitignore`));
 
     // fs
     //   .createReadStream(path.join(__dirname, `../.gitignorelocal}`))
