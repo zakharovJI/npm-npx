@@ -97,6 +97,15 @@ exec(
         console.log(npmStdout);
         console.log('Dependencies installed');
 
+        console.log('Copying .gitignore file..');
+        // copy additional source files
+
+        fs
+          .createReadStream(path.join(__dirname, `../.gitignorelocal}`))
+          .pipe(fs.createWriteStream(`${packageJson.name}/.gitignore`))
+          .then(() => console.log('.gitignore is copied'))
+          .catch(err => console.error(err))
+
         console.log('Copying additional files..');
         // copy additional source files
         fs
@@ -108,9 +117,5 @@ exec(
           .catch(err => console.error(err));
       },
     );
-
-    fs
-      .createReadStream(path.join(__dirname, `../.gitignorelocal}`))
-      .pipe(fs.createWriteStream(`${packageJson.name}/.gitignore`));
   },
 );
