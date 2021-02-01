@@ -72,7 +72,7 @@ exec(
       fs.writeFile(packageJSON, data, err2 => err2 || true);
     });
 
-    const filesToCopy = ['next.config.js','postcss.config.js','tsconfig.json'];
+    const filesToCopy = ['.gitignore', 'next.config.js','postcss.config.js','tsconfig.json'];
 
     for (let i = 0; i < filesToCopy.length; i += 1) {
       fs
@@ -80,9 +80,9 @@ exec(
         .pipe(fs.createWriteStream(`${packageJson.name}/${filesToCopy[i]}`));
     }
 
-    fs
-      .createReadStream(path.join(__dirname, `../.gitignorelocal}`))
-      .pipe(fs.createWriteStream(`${packageJson.name}/.gitignore`))
+    // fs
+    //   .createReadStream(path.join(__dirname, `../.gitignorelocal}`))
+    //   .pipe(fs.createWriteStream(`${packageJson.name}/.gitignore`))
 
 
     console.log('npm init -- done\n');
@@ -105,9 +105,9 @@ exec(
         console.log('Copying .gitignore file..');
         // copy additional source files
 
-        fs
-          .createReadStream(path.join(__dirname, `../gitignorelocal}`))
-          .pipe(fs.createWriteStream(`${packageJson.name}/.gitignore`))
+        // fs
+        //   .createReadStream(path.join(__dirname, `../gitignorelocal}`))
+        //   .pipe(fs.createWriteStream(`${packageJson.name}/.gitignore`))
 
         console.log('Copying additional files..');
         // copy additional source files
