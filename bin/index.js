@@ -72,13 +72,17 @@ exec(
       fs.writeFile(packageJSON, data, err2 => err2 || true);
     });
 
-    const filesToCopy = ['.gitignorelocal', 'next.config.js','postcss.config.js','tsconfig.json'];
+    const filesToCopy = [next.config.js','postcss.config.js','tsconfig.json'];
 
     for (let i = 0; i < filesToCopy.length; i += 1) {
       fs
         .createReadStream(path.join(__dirname, `../${filesToCopy[i]}`))
         .pipe(fs.createWriteStream(`${packageJson.name}/${filesToCopy[i]}`));
     }
+
+    fs
+      .createReadStream(path.join(__dirname, `../${'.gitignorelocal'}`))
+      .pipe(fs.createWriteStream(`${packageJson.name}/${'.gitignore'}`));
 
     // fs
     //   .createReadStream(path.join(__dirname, `../.gitignorelocal}`))
