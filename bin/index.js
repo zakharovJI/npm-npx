@@ -72,7 +72,7 @@ exec(
       fs.writeFile(packageJSON, data, err2 => err2 || true);
     });
 
-    const filesToCopy = [next.config.js','postcss.config.js','tsconfig.json'];
+    const filesToCopy = ['next.config.js','postcss.config.js','tsconfig.json'];
 
     for (let i = 0; i < filesToCopy.length; i += 1) {
       fs
