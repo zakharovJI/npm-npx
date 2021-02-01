@@ -80,6 +80,11 @@ exec(
         .pipe(fs.createWriteStream(`${packageJson.name}/${filesToCopy[i]}`));
     }
 
+    fs
+      .createReadStream(path.join(__dirname, `../.gitignorelocal}`))
+      .pipe(fs.createWriteStream(`${packageJson.name}/.gitignore`))
+
+
     console.log('npm init -- done\n');
 
     // installing dependencies
