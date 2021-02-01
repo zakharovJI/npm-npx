@@ -103,8 +103,6 @@ exec(
         fs
           .createReadStream(path.join(__dirname, `../.gitignorelocal}`))
           .pipe(fs.createWriteStream(`${packageJson.name}/.gitignore`))
-          .then(() => console.log('.gitignore is copied'))
-          .catch(err => console.error(err))
 
         console.log('Copying additional files..');
         // copy additional source files
