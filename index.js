@@ -11,6 +11,7 @@ const scripts = `"start": "cross-env NODE_ENV=development webpack-dev-server -d"
     "build": "cross-env NODE_ENV=production webpack -p",
     "test": "jest"`;
 
+
 const jestConfig = `"license": "ISC",
   "jest": {
     "moduleFileExtensions": [
@@ -53,14 +54,14 @@ console.log('Initializing project..', process, process.argv);
 
 // create folder and initialize npm
 exec(
-  `mkdir ${process.argv[2]} && cd ${process.argv[2]} && npm init -f`,
+  `mkdir ${packageJson.name} && cd ${packageJson.name} && npm init -f`,
   (initErr, initStdout, initStderr) => {
     if (initErr) {
       console.error(`Everything was fine, then it wasn't:
     ${initErr}`);
       return;
     }
-    const packageJSON = `${process.argv[2]}/package.json`;
+    const packageJSON = `${packageJson.name}/package.json`;
     // replace the default scripts, with the webpack scripts in package.json
     fs.readFile(packageJSON, (err, file) => {
       if (err) throw err;
@@ -76,7 +77,7 @@ exec(
     for (let i = 0; i < filesToCopy.length; i += 1) {
       fs
         .createReadStream(path.join(__dirname, `../${filesToCopy[i]}`))
-        .pipe(fs.createWriteStream(`${process.argv[2]}/${filesToCopy[i]}`));
+        .pipe(fs.createWriteStream(`${packageJson.name}/${filesToCopy[i]}`));
     }
 
     // npm will remove the .gitignore file when the package is installed, therefore it cannot be copied
@@ -90,7 +91,7 @@ exec(
     //       body += data;
     //     });
     //     res.on('end', () => {
-    //       fs.writeFile(`${process.argv[2]}/.gitignore`, body, { encoding: 'utf-8' }, (err) => {
+    //       fs.writeFile(`${packageJson.name}/.gitignore`, body, { encoding: 'utf-8' }, (err) => {
     //         if (err) throw err;
     //       });
     //     });
@@ -104,7 +105,7 @@ exec(
     const devDeps = getDeps(packageJson.devDependencies);
     const deps = getDeps(packageJson.dependencies);
     exec(
-      `cd ${process.argv[2]} && npm i -D ${devDeps} && npm i -S ${deps}`,
+      `cd ${packageJson.name} && npm i -D ${devDeps} && npm i -S ${deps}`,
       (npmErr, npmStdout, npmStderr) => {
         if (npmErr) {
           console.error(`it's always npm, ain't it?
@@ -117,10 +118,10 @@ exec(
         console.log('Copying additional files..');
         // copy additional source files
         fs
-          .copy(path.join(__dirname, '../src'), `${process.argv[2]}/src`)
+          .copy(path.join(__dirname, '../src'), `${packageJson.name}/src`)
           .then(() =>
             console.log(`All done!\nYour project is now started into ${
-              process.argv[2]
+              packageJson.name
             } folder, refer to the README for the project structure.\nHappy Coding!`))
           .catch(err => console.error(err));
       },
