@@ -11,5 +11,11 @@
     "npm-npx": "index.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "vue": "^2.6.12"
+  },
+  "devDependencies": {
+    "vue-router": "^3.5.1"
+  }
 }
