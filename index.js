@@ -53,14 +53,14 @@ console.log('Initializing project..');
 
 // create folder and initialize npm
 exec(
-  `mkdir ${process.argv[2]} && cd ${process.argv[2]} && npm init -f`,
+  `mkdir ${process.argv[1]} && cd ${process.argv[1]} && npm init -f`,
   (initErr, initStdout, initStderr) => {
     if (initErr) {
       console.error(`Everything was fine, then it wasn't:
     ${initErr}`);
       return;
     }
-    const packageJSON = `${process.argv[2]}/package.json`;
+    const packageJSON = `${process.argv[1]}/package.json`;
     // replace the default scripts, with the webpack scripts in package.json
     fs.readFile(packageJSON, (err, file) => {
       if (err) throw err;
@@ -71,7 +71,7 @@ exec(
       fs.writeFile(packageJSON, data, err2 => err2 || true);
     });
 
-    const filesToCopy = ['.gitignore','next.config.js','postcss.config.js','tsconfig.json'];
+    const filesToCopy = ['next.config.js','postcss.config.js','tsconfig.json'];
 
     for (let i = 0; i < filesToCopy.length; i += 1) {
       fs
@@ -104,7 +104,7 @@ exec(
     const devDeps = getDeps(packageJson.devDependencies);
     const deps = getDeps(packageJson.dependencies);
     exec(
-      `cd ${process.argv[2]} && npm i -D ${devDeps} && npm i -S ${deps}`,
+      `cd ${process.argv[1]} && npm i -D ${devDeps} && npm i -S ${deps}`,
       (npmErr, npmStdout, npmStderr) => {
         if (npmErr) {
           console.error(`it's always npm, ain't it?
@@ -117,10 +117,10 @@ exec(
         console.log('Copying additional files..');
         // copy additional source files
         fs
-          .copy(path.join(__dirname, '../src'), `${process.argv[2]}/src`)
+          .copy(path.join(__dirname, '../src'), `${process.argv[1]}/src`)
           .then(() =>
             console.log(`All done!\nYour project is now started into ${
-              process.argv[2]
+              process.argv[1]
             } folder, refer to the README for the project structure.\nHappy Coding!`))
           .catch(err => console.error(err));
       },
