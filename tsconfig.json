@@ -34,5 +34,11 @@
   "exclude": [
     "node_modules"
   ],
+  "plugins": [
+    {
+      "transform": "typescript-plugin-styled-components",
+      "type": "config",
+    }
+  ],
   "extends": "./tsconfig.paths.json"
 }

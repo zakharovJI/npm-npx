@@ -1,19 +1,19 @@
 import React from "react";
-import Default from "../layouts/default";
 import styled from "styled-components";
+import Authorization from "@/layouts/authorization";
 
-const StyledHome = styled.div`
+const StyledLogin = styled.div`
   height: 100%;
 `;
 
-const Home: React.VFC = (): JSX.Element => {
+const Login: React.VFC = (): JSX.Element => {
   return (
-    <Default>
-      <StyledHome>
-        <div>This is RAP</div>
-      </StyledHome>
-    </Default>
+    <Authorization>
+      <StyledLogin>
+        <div>This is Login</div>
+      </StyledLogin>
+    </Authorization>
   );
 };
 
-export default Home;
+export default Login;

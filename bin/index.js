@@ -55,7 +55,7 @@ console.log("Initializing project..");
 // create folder and initialize npm
 exec(
   `mkdir ${packageJson.name} && cd ${packageJson.name} && npm init -f`,
-  (initErr, initStdout, initStderr) => {
+  (initErr) => {
     if (initErr) {
       console.error(`Everything was fine, then it wasn't:
     ${initErr}`);
@@ -76,12 +76,13 @@ exec(
     });
 
     const filesToCopy = [
+      ".eslintrc.js",
+      ".babelrc",
       "README.md",
       "tsconfig.json",
-      ".eslintrc.js",
-      "next.config.js",
       "postcss.config.js",
       "tsconfig.json",
+      "tsconfig.paths.json",
     ];
 
     for (let i = 0; i < filesToCopy.length; i += 1) {

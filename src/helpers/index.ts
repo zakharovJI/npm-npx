@@ -1,5 +1,5 @@
-import { IColor, IMedia } from "@/helpers/interfaces";
 import { colors as colors_ } from "@/helpers/styleColors";
+import { IColor, IMedia } from "@/helpers/interfaces";
 import {
   media as media_,
   mediaRevers as mediaRevers_,

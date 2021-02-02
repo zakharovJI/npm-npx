@@ -4,28 +4,23 @@ import { media } from "@/helpers/index";
 import { Header, Menu } from "@/components/layout/index";
 import { Container } from "@/components/basic/index";
 
-const StyledContent = styled.div`
-  display: flex;
+const StyledAuthorization = styled.div`
+  width: 100%;
 `;
 
-const StyledDefault = styled.div`
-  flex: 1;
-`;
-
-const Default: React.VFC<DefaultProps> = ({ children }): JSX.Element => {
+const Authorization: React.VFC<IAuthorization> = ({
+  children,
+}): JSX.Element => {
   return (
     <Container>
-      <Header />
-      <StyledContent>
-        <Menu />
-        <StyledDefault>{children}</StyledDefault>
-      </StyledContent>
+      <Header layout="authorization" />
+      <StyledAuthorization>{children}</StyledAuthorization>
     </Container>
   );
 };
 
-interface DefaultProps {
+interface IAuthorization {
   children: JSX.Element | JSX.Element[];
 }
 
-export default Default;
+export default Authorization;

@@ -1,27 +1,37 @@
 import React from "react";
 import styled from "styled-components";
-import { media } from "@/helpers/index";
-import WhiteNoise from "../components/WhiteNoise";
+import { Header, Menu } from "@/components/layout/index";
+import { Container } from "@/components/basic/index";
 
-const StyledDefault = styled.div`
-  width: 100%;
-  padding-bottom: 120px;  
-
-  ${media.tablet} {
-    padding-bottom: 160px;
-  }
+const StyledContent = styled.div`
+  margin-top: 60px;
+  display: flex;
 `;
 
-const Default: React.VFC<DefaultProps> = ({ children }): JSX.Element => {
+const StyledDefault = styled.div`
+  min-height: 100vh;
+`;
+
+const StyledView = styled.div`
+  flex: 1;
+  margin-left: 32px;
+`;
+
+const Default: React.VFC<IDefault> = ({ children }): JSX.Element => {
   return (
-    <>
-      <WhiteNoise />
-      <StyledDefault>{children}</StyledDefault>
-    </>
+    <StyledDefault>
+      <Container>
+        <Header />
+        <StyledContent>
+          <Menu />
+          <StyledView>{children}</StyledView>
+        </StyledContent>
+      </Container>
+    </StyledDefault>
   );
 };
 
-interface DefaultProps {
+interface IDefault {
   children: JSX.Element | JSX.Element[];
 }
 

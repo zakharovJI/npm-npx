@@ -1,10 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
-const StyledHeader = styled.header``;
+const StyledMenu = styled.menu`
+  height: 500px;
+  width: 250px;
+  background-color: blue;
+`;
 
-const Header: React.VFC = (): JSX.Element => {
-  return <StyledHeader />;
+const Menu: React.VFC = (): JSX.Element => {
+  return <StyledMenu />;
 };
 
-export default Header;
+export default Menu;
