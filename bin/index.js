@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-console.log(123);
+
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const fs = require("fs-extra");
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -116,7 +116,10 @@ exec(
         fs.copy(path.join(__dirname, "../src"), `${packageJson.name}/src`)
           .then(() =>
             fs
-              .copy(path.join(__dirname, "../src"), `${packageJson.name}/src`)
+              .copy(
+                path.join(__dirname, "../public"),
+                `${packageJson.name}/public`
+              )
               .then(() => console.log(`All done!\nAdmin panel is installed!`))
               .catch((err) => console.error(err))
           )
