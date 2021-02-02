@@ -3,7 +3,7 @@
     "target": "esnext",
     "module": "esnext",
     "strict": true,
-    "jsx": "preserve",
+    "jsx": "react",
     "importHelpers": true,
     "moduleResolution": "node",
     "skipLibCheck": true,
@@ -13,23 +13,24 @@
     "baseUrl": "./",
     "paths": {
       "@/hooks/*": [
-        "hooks/*"
+        "src/hooks/*"
       ],
       "@/components/*": [
-        "components/*"
+        "src/components/*"
       ],
       "@/pages/*": [
-        "pages/*"
+        "src/pages/*"
       ],
       "@/helpers/*": [
-        "helpers/*"
+        "src/helpers/*"
       ],
       "@/assets/*": [
-        "assets/*"
+        "src/assets/*"
       ]
     },
     "types": [
-      "webpack-env"
+      "webpack-env",
+      "jest"
     ],
     "lib": [
       "dom",
@@ -38,16 +39,16 @@
     ],
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
+    "noFallthroughCasesInSwitch": true,
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "noEmit": true
   },
-  "exclude": [
-    "node_modules"
-  ],
   "include": [
-    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }
