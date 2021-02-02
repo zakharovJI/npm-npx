@@ -76,8 +76,8 @@ exec(
     });
 
     const filesToCopy = [
-      ".eslintrc.js",
       ".babelrc",
+      "tslint.json",
       "README.md",
       "tsconfig.json",
       "postcss.config.js",
