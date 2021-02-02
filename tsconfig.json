@@ -3,7 +3,7 @@
     "target": "esnext",
     "module": "esnext",
     "strict": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "importHelpers": true,
     "moduleResolution": "node",
     "skipLibCheck": true,
@@ -11,23 +11,6 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": "./",
-    "paths": {
-      "@/hooks/*": [
-        "src/hooks/*"
-      ],
-      "@/components/*": [
-        "src/components/*"
-      ],
-      "@/pages/*": [
-        "src/pages/*"
-      ],
-      "@/helpers/*": [
-        "src/helpers/*"
-      ],
-      "@/assets/*": [
-        "src/assets/*"
-      ]
-    },
     "types": [
       "webpack-env",
       "jest"
@@ -50,5 +33,6 @@
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "extends": "./tsconfig.paths.json"
 }
