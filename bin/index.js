@@ -1,8 +1,12 @@
 #!/usr/bin/env node
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const fs = require("fs-extra");
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require("path");
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { exec } = require("child_process");
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const packageJson = require("../package.json");
 
 const scripts = `"start": "react-scripts start",
@@ -66,8 +70,8 @@ exec(
         .replace(
           '"test": "echo \\"Error: no test specified\\" && exit 1"',
           scripts
-        )
-        .replace('"license": "ISC"', jestConfig);
+        );
+      // .replace('"license": "ISC"', jestConfig);
       fs.writeFile(packageJSON, data, (err2) => err2 || true);
     });
 
