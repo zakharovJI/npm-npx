@@ -1,0 +1,42 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:latest",
+    "tslint-react",
+    "tslint-eslint-rules",
+    "tslint-config-prettier"
+  ],
+  "jsRules": {},
+  "rulesDirectory": [],
+  "parserOptions": {
+    "ecmaVersion": 2020
+  },
+  "paths": {
+    "@/hooks/*": [
+      "src/hooks/*"
+    ],
+    "@/components/*": [
+      "src/components/*"
+    ],
+    "@/pages/*": [
+      "src/pages/*"
+    ],
+    "@/layouts/*": [
+      "src/layouts/*"
+    ],
+    "@/helpers/*": [
+      "src/helpers/*"
+    ],
+    "@/assets/*": [
+      "src/assets/*"
+    ]
+  },
+  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "rules": {
+    "react/prop-types": 0,
+    "no-implicit-dependencies": false,
+    "no-submodule-imports": false,
+    "ordered-imports": false,
+    "object-literal-sort-keys": false
+  }
+}
